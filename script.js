@@ -17,6 +17,9 @@ function createGrid(grid_size){
                 grid_element.style.clear = "left";
             }
 
+            grid_element.addEventListener('mouseover', function(e){
+                draw(e.target);
+            });
             container.appendChild(grid_element);
         }
     }
@@ -31,6 +34,20 @@ function clearGrid(container){
 function newGrid(){
     let grid_size = prompt("Plese enter size for new grid");
     createGrid(grid_size);
+}
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+function draw(element){
+    element.style.backgroundColor = getRandomColor();
+    fadeGrid();
 }
 
 const new_grid_button = document.querySelector('#new_grid_button');
